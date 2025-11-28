@@ -1,0 +1,11 @@
+SupplierID,SupplierName,Country,Category,ExpectedLeadTime_Days
+S001,GlobalChem Industries,Germany,Raw Materials,7
+S002,TechnoPack Solutions,Poland,Packaging,12
+S003,AgriBase Europe,France,Raw Materials,5
+S004,PolyFlex Manufacturing,Italy,Packaging,8
+S005,CleanSolv Chemicals,Belgium,Raw Materials,10
+S006,GreenHarvest Africa,Morocco,Raw Materials,14
+S007,PackCom Logistic,Spain,Packaging,6
+S008,EuroSupply Trading,Netherlands,Others,9
+S009,NorthMinerals Ltd,Sweden,Raw Materials,15
+S010,MegaPack International,Germany,Packaging,11
