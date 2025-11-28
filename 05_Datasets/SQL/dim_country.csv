@@ -1,0 +1,11 @@
+country_id,country_code,country_name,region,market_type
+1,FR,France,Europe,Mature
+2,DE,Germany,Europe,Mature
+3,ES,Spain,Europe,Mature
+4,IT,Italy,Europe,Mature
+5,BE,Belgium,Europe,Mature
+6,MA,Morocco,Africa,Emerging
+7,KE,Kenya,Africa,Emerging
+8,ZA,South Africa,Africa,Emerging
+9,US,United States,North America,Mature
+10,BR,Brazil,South America,Emerging
