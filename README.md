@@ -96,10 +96,5 @@ Chaque exercice est indépendant.
 
 ---
 
-
-
-
----
-
-# 🎉 Bonne pratique !  
+# 🎉 Bonne nouvelle !  
 Ce dépôt évoluera avec de nouveaux exercices, datasets et solutions.
