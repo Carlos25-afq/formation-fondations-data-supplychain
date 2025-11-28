@@ -1,0 +1,110 @@
+// ================================================
+//   TEMPLATE M-CODE — CONSOLIDATION MENSUELLE
+//   Compatible avec les fichiers "commandes_2023_Mxx_brut.xlsx"
+// ================================================
+
+// --- FONCTION PERSONNALISÉE ---
+// Cette fonction reçoit un fichier brut et renvoie un tableau uniforme
+// entièrement nettoyé selon le schéma cible.
+
+(SourceFile as binary, FileName as text) =>
+let
+    //--------------------------------------------------------
+    // 1. Importer la feuille
+    //--------------------------------------------------------
+    // On lit la première feuille de chaque fichier XLSX.
+    Source = Excel.Workbook(SourceFile, null, true),
+    Sheet = Source{0}[Data],
+
+    //--------------------------------------------------------
+    // 2. Promouvoir les en-têtes
+    //--------------------------------------------------------
+    PromoteHeaders = Table.PromoteHeaders(Sheet, [PromoteAllScalars=true]),
+
+    //--------------------------------------------------------
+    // 3. Nettoyage des noms de colonnes (normalize)
+    //--------------------------------------------------------
+    // Les colonnes peuvent varier (OrderDate, Date_Commande, Order_Date)
+    // On harmonise TOUTES les variations dans un mapping clair.
+    RenamedColumns = Table.TransformColumnNames(PromoteHeaders, Text.Trim),
+
+    ColumnMappings = {
+        {"Date_Commande", "OrderDate"},
+        {"Order_Date", "OrderDate"},
+        {"Order Date", "OrderDate"},
+        {"Product_Code", "SKU"},
+        {"ItemCode", "SKU"},
+        {"ProductCode", "SKU"},
+        {"Qty", "Quantity"},
+        {"Order_Qty", "Quantity"},
+        {"Supplier", "SupplierID"}
+    },
+
+    ApplyMappings = List.Accumulate(
+        ColumnMappings,
+        RenamedColumns,
+        (state, current) =>
+            if Table.HasColumns(state, {current{0}}) 
+            then Table.RenameColumns(state, {current})
+            else state
+    ),
+
+    //--------------------------------------------------------
+    // 4. Ajouter les colonnes manquantes selon schéma cible
+    //--------------------------------------------------------
+    TargetColumns = {
+        "OrderID","OrderDate","DeliveryDate",
+        "SKU","SupplierID","Quantity","Warehouse",
+        "Month","SourceFile"
+    },
+
+    AddMissingColumns = List.Accumulate(
+        TargetColumns,
+        ApplyMappings,
+        (state, col) =>
+            if Table.HasColumns(state, {col}) then state
+            else Table.AddColumn(state, col, each null)
+    ),
+
+    //--------------------------------------------------------
+    // 5. Forcer les types importants
+    //--------------------------------------------------------
+    TypeChanged = Table.TransformColumnTypes(
+        AddMissingColumns,
+        {
+            {"OrderID", type text},
+            {"OrderDate", type date},
+            {"DeliveryDate", type date},
+            {"SKU", type text},
+            {"SupplierID", type text},
+            {"Quantity", Int64.Type},
+            {"Warehouse", type text}
+        },
+    "fr-FR"),
+
+    //--------------------------------------------------------
+    // 6. Ajouter colonne SourceFile
+    //--------------------------------------------------------
+    AddSourceFile = Table.AddColumn(TypeChanged, "SourceFile", each FileName, type text),
+
+    //--------------------------------------------------------
+    // 7. Extraire le mois à partir du nom du fichier
+    //--------------------------------------------------------
+    ExtractMonth = Table.AddColumn(
+        AddSourceFile,
+        "Month",
+        each try Number.FromText(Text.Middle(FileName, 16, 2)) otherwise null,
+        Int64.Type
+    ),
+
+    //--------------------------------------------------------
+    // 8. Réorganiser les colonnes selon le schéma final
+    //--------------------------------------------------------
+    FinalReorder = Table.ReorderColumns(
+        ExtractMonth,
+        TargetColumns,
+        MissingField.UseNull
+    )
+
+in
+    FinalReorder
