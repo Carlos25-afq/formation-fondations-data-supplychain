@@ -1,0 +1,13 @@
+TransporterID,TransporterName,Country,AvgCostPerKm
+T001,DHL Logistics,Germany,1.25
+T002,Kuehne+Nagel,Switzerland,1.17
+T003,DB Schenker,Germany,0.72
+T004,XPO Transport,France,0.83
+T005,Maersk Road Freight,Denmark,0.71
+T006,FedEx Europe,Netherlands,1.43
+T007,Chronopost,France,1.49
+T008,Geodis Freight,France,1.5
+T009,GLS International,Italy,1.41
+T010,UPS Europe,Belgium,0.85
+T011,Bring Transport,Norway,1.4
+T012,CEVA Logistics,UK,1.34
