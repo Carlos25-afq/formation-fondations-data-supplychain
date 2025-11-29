@@ -1,7 +1,7 @@
 # 📦 Formation – Fondations Data de la Supply Chain  
 
 ## Documentation Théorique
-- [Forecasting Theory](https://github.com/Carlos25-afq/formation-fondations-data-supplychain.wiki.git)
+- [Forecasting Theory](https://github.com/Carlos25-afq/formation-fondations-data-supplychain/wiki/Forecasting-Theory)
 
 <p align="center">
 
