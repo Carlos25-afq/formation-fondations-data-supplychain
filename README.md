@@ -11,6 +11,10 @@
 </p>
 
 
+## Documentation avancée
+- [Forecasting Theory](https://github.com/Carlos25-afq/formation-fondations-data-supplychain.wiki.git)
+
+
 Ce dépôt GitHub contient une formation 100 % pratique pour apprendre à manipuler, nettoyer,
 automatiser et analyser des données de Supply Chain.
 
