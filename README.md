@@ -1,5 +1,8 @@
 # 📦 Formation – Fondations Data de la Supply Chain  
 
+## Documentation avancée
+- [Forecasting Theory](https://github.com/Carlos25-afq/formation-fondations-data-supplychain.wiki.git)
+
 <p align="center">
 
   <img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" />
@@ -9,10 +12,6 @@
   <img src="https://img.shields.io/badge/Data%20Modeling-8B0000?style=for-the-badge" />
 
 </p>
-
-
-## Documentation avancée
-- [Forecasting Theory](https://github.com/Carlos25-afq/formation-fondations-data-supplychain.wiki.git)
 
 
 Ce dépôt GitHub contient une formation 100 % pratique pour apprendre à manipuler, nettoyer,
