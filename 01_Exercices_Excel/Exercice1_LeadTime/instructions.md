@@ -1,4 +1,4 @@
-# Exercice 1 — Analyse des Lead Times Fournisseurs (Excel)
+# Exercice 1 : Analyse des Lead Times Fournisseurs (Excel)
 
 ## 🎯 Objectif
 Analyser la performance des fournisseurs sur 12 mois : lead time réel, écart par rapport au lead time attendu, retards, fiabilité, et %OTD (On Time Delivery).
@@ -35,28 +35,28 @@ Colonnes :
 
 # 2. Tâches à réaliser
 
-## Étape 1 — Consolider les données
+## Étape 1 : Consolider les données
 - Importer les 12 fichiers mensuels dans un seul tableau Excel.
 - Ajouter une colonne `Month` (1 à 12 ou Jan–Déc).
 - Vérifier les types de données.
 
-## Étape 2 — Calculer le Lead Time réel
+## Étape 2 : Calculer le Lead Time réel
 Créer la colonne :
 LeadTime_Real_Days = DeliveryDate - OrderDate
 
 Attention : format date obligatoire.
 
-## Étape 3 — Joindre les données fournisseurs
+## Étape 3 : Joindre les données fournisseurs
 À partir de `SupplierID`, récupérer :
 - `SupplierName`
 - `ExpectedLeadTime_Days`
 
-## Étape 4 — Déterminer si la commande est dans les délais
+## Étape 4 : Déterminer si la commande est dans les délais
 Créer une colonne :
 OnTime = IF(LeadTime_Real_Days <= ExpectedLeadTime_Days; 1; 0)
 
 
-## Étape 5 — Construire les KPI par fournisseur
+## Étape 5 : Construire les KPI par fournisseur
 Créer un tableau ou un TCD contenant :
 - Lead Time moyen
 - Lead Time max et min
@@ -64,12 +64,12 @@ Créer un tableau ou un TCD contenant :
 - Nombre de commandes
 - Écart moyen entre LT réel et LT attendu
 
-## Étape 6 — Classer les fournisseurs
+## Étape 6 : Classer les fournisseurs
 - Identifier les 10 pires fournisseurs (%OTD le plus bas).
 - Identifier les 10 meilleurs.
 - Mettre une mise en forme conditionnelle.
 
-## Étape 7 — Créer un mini-dashboard
+## Étape 7 : Créer un mini-dashboard
 Onglet `Dashboard` :
 - Graphique %OTD par fournisseur
 - Top 3 meilleurs fournisseurs
