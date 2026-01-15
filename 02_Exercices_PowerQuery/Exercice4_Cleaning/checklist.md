@@ -1,4 +1,4 @@
-# ✔️ Checklist Professionnelle — Data Cleaning (Power Query)
+# ✔️ Checklist  — Data Cleaning (Power Query)
 
 Cette checklist vous permet de valider que votre nettoyage de données Supply Chain est complet, fiable, robuste.
 
